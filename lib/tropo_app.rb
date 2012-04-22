@@ -51,15 +51,22 @@ class TropoApp < Sinatra::Base
     v = Tropo::Generator.parse request.env["rack.input"].read
     pp v
 
-    trunk_line = v[:session][:to][:id]
-    caller_id = v[:session][:from][:id]
-
-    product = Product.find_by_tropo_number("+1#{trunk_line}")
-
     t = tropo_object
 
-    t.on :event => 'continue', :next => "/tropo/survey.json&product_id=#{product.id}"
-    t.ask construct_welcome_message(product.name, product.description)
+    ##
+    # This will detect if the next action will be outbound
+    #
+    if v[:session][:parameters]
+      product = Product.find(v[:session][:parameters][:product_id])
+      t.call :to => v[:session][:parameters][:number_to_dial], :from => v[:session][:parameters][:caller_id]
+      t.on :event => 'continue', :next => "/tropo/survey.json&product_id=#{product.id}"
+      t.ask construct_welcome_message(product.name, product.description)
+    else
+      trunk_line = v[:session][:to][:id]
+      product = Product.find_by_tropo_number("+1#{trunk_line}")
+      t.on :event => 'continue', :next => "/tropo/survey.json&product_id=#{product.id}"
+      t.ask construct_welcome_message(product.name, product.description)
+    end
 
     pp t.response
     t.response
