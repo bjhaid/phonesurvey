@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   validates :name, :presence => true
   validates :description, :presence => true
+  validates :tropo_number, :presence => true, :uniqueness => true
 
   belongs_to :user
   has_many :surveys

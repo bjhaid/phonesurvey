@@ -13,4 +13,5 @@ Phonesurvey::Application.routes.draw do
       resources :feedbacks
     end
   end
+  mount TropoApp, :at => "/tropo"
 end
