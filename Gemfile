@@ -10,6 +10,8 @@ gem "simple_form"
 gem "will_paginate", ">= 3.0.3"
 gem "heroku"
 gem "resque"
+gem "faraday"
+gem "sinatra"
 
 gem "tropo-webapi-ruby"
 gem "tropo-provisioning"
