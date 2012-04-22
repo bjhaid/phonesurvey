@@ -1,4 +1,6 @@
 Phonesurvey::Application.routes.draw do
+  resources :feedbacks
+
   resources :surveys
 
   authenticated :user do

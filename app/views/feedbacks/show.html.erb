@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Survey:</b>
+  <%= @feedback.survey_id %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @feedback.answer %>
+</p>
+
+<p>
+  <b>Callerid:</b>
+  <%= @feedback.callerid %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>

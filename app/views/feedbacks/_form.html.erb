@@ -1,0 +1,13 @@
+<%= simple_form_for(@feedback) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :survey_id %>
+    <%= f.input :answer %>
+    <%= f.input :callerid %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
