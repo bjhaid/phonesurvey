@@ -9,6 +9,7 @@ gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
 gem "simple_form"
 gem "will_paginate", ">= 3.0.3"
 gem "heroku"
+gem "resque"
 
 group :development do
   gem 'sqlite3'
