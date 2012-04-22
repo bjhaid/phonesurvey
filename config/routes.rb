@@ -12,4 +12,6 @@ Phonesurvey::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   resources :products
+
+  mount TropoApp, :at => "/tropo"
 end
