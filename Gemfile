@@ -11,6 +11,9 @@ gem "will_paginate", ">= 3.0.3"
 gem "heroku"
 gem "resque"
 
+gem "tropo-webapi-ruby"
+gem "tropo-provisioning"
+
 group :development do
   gem 'sqlite3'
 end
