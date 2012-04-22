@@ -63,7 +63,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.update_attributes(params[:survey])
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        format.html { redirect_to [@product, @survey], notice: 'Survey was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
