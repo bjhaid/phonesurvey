@@ -63,5 +63,6 @@ module Phonesurvey
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.prefix = Rails.root.join('tmp/assets').to_s
   end
 end
