@@ -1,0 +1,19 @@
+development:
+  username:
+  password:
+  app_id:
+  voice_token:
+  messaging_token:
+test:
+  username:
+  password:
+  app_id:
+  voice_token:
+  messaging_token:
+production:
+  username:
+  password:
+  app_id:
+  voice_token:
+  messaging_token:
+
