@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
   validates :description, :presence => true
 
   belongs_to :user
+  has_many :surveys
 end
