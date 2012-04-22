@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_product
 
   # GET /surveys
   # GET /surveys.json
@@ -26,7 +27,7 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   # GET /surveys/new.json
   def new
-    @survey = Survey.new
+    @survey = @product.surveys.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +43,11 @@ class SurveysController < ApplicationController
   # POST /surveys
   # POST /surveys.json
   def create
-    @survey = Survey.new(params[:survey])
-
+    @survey = @product.surveys.build(params[:survey])
+    
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+        format.html { redirect_to [@product, @survey], notice: 'Survey was successfully created.' }
         format.json { render json: @survey, status: :created, location: @survey }
       else
         format.html { render action: "new" }
@@ -82,4 +83,9 @@ class SurveysController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def find_product
+      @product = Product.find(params[:product_id])
+    end
 end
