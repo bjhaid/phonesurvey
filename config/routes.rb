@@ -1,15 +1,16 @@
 Phonesurvey::Application.routes.draw do
-  resources :feedbacks
-
-  resources :surveys
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'products#index'
   end
 
   root :to => "home#index"
   devise_for :users
   resources :users, :only => [:show, :index]
 
-  resources :products
+  resources :products do
+    resources :surveys do
+      resources :feedbacks
+    end
+  end
 end

@@ -20,6 +20,8 @@
         <td><%= product.tropo_number %></td>
         <td><%=l product.created_at %></td>
         <td>
+          <%= link_to t('.edit', :default => t("helpers.links.create survey")),
+                      new_product_survey_path(product), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
