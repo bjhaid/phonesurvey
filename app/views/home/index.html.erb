@@ -1,4 +1,4 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<h3>List of Products for PhoneSurvey</h3>
+<% @products.each do |product| %>
+  <p><%= product.name %></p>
 <% end %>

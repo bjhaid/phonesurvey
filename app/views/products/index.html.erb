@@ -30,7 +30,8 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_product_path,
-            :class => 'btn btn-primary' %>
+<% if current_user.products.size < 3 %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_product_path,
+              :class => 'btn btn-primary' %>
+<% end %>

@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = current_user.products.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +42,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(params[:product].merge(:user_id => current_user.id))
 
     respond_to do |format|
       if @product.save
