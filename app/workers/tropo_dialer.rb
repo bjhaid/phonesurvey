@@ -3,7 +3,7 @@ require 'faraday'
 class TropoDialer
   @queue = :tropo_dialer
 
-  @tropo_voice_token = TROPO_CONFIG['voice_token']
+  @tropo_voice_token = ENV['TROPO_VOICE_TOKEN']
 
   @conn = Faraday.new(:url => "https://api.tropo.com") do |builder|
     builder.use Faraday::Request::JSON

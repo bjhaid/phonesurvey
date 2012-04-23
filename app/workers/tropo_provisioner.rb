@@ -3,9 +3,9 @@ require "tropo-provisioning"
 class TropoProvisioner
   @queue = :tropo_provisioner
 
-  @tropo_username = TROPO_CONFIG['username']
-  @tropo_password = TROPO_CONFIG['password']
-  @tropo_app_id = TROPO_CONFIG['app_id']
+  @tropo_username = ENV['TROPO_USERNAME']
+  @tropo_password = ENV['TROPO_PASSWORD']
+  @tropo_app_id = ENV['TROPO_APP_ID']
 
   def self.perform(product_id)
     product = Product.find(product_id)

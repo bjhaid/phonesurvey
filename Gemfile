@@ -12,6 +12,7 @@ gem "heroku"
 gem "resque"
 gem "faraday"
 gem "sinatra"
+gem "thin"
 
 gem "tropo-webapi-ruby"
 gem "tropo-provisioning"
