@@ -7,6 +7,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                product_survey_path(@product, @survey), :class => 'btn' %>
   </div>
 <% end %>

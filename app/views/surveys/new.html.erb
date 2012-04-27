@@ -1,5 +1,5 @@
-<h1>New survey</h1>
+<h1><%= @product.name %> &raquo New survey</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', surveys_path %>
+<%= link_to 'Back', product_surveys_path(@product) %>

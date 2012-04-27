@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @survey %> |
-<%= link_to 'Back', surveys_path %>
+<%= link_to 'Show', product_survey_path(@product, @survey) %> |
+<%= link_to 'Back', product_surveys_path(@product) %>
