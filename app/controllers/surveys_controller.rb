@@ -1,11 +1,11 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_product
+  before_filter :find_survey, :only => [:show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
   def index
-    # @surveys = Survey.all
     @surveys = @product.surveys.all
 
     respond_to do |format|
@@ -17,8 +17,6 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
-    @survey = Survey.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @survey }
@@ -38,7 +36,6 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
-    @survey = Survey.find(params[:id])
   end
 
   # POST /surveys
@@ -60,8 +57,6 @@ class SurveysController < ApplicationController
   # PUT /surveys/1
   # PUT /surveys/1.json
   def update
-    @survey = Survey.find(params[:id])
-
     respond_to do |format|
       if @survey.update_attributes(params[:survey])
         format.html { redirect_to [@product, @survey], notice: 'Survey was successfully updated.' }
@@ -76,7 +71,6 @@ class SurveysController < ApplicationController
   # DELETE /surveys/1
   # DELETE /surveys/1.json
   def destroy
-    @survey = Survey.find(params[:id])
     @survey.destroy
 
     respond_to do |format|
@@ -88,5 +82,9 @@ class SurveysController < ApplicationController
   private
     def find_product
       @product = Product.find(params[:product_id])
+    end
+
+    def find_survey
+      @survey = Survey.find(params[:id])
     end
 end
