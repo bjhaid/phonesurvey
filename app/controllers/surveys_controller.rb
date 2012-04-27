@@ -76,7 +76,7 @@ class SurveysController < ApplicationController
     @survey.destroy
 
     respond_to do |format|
-      format.html { redirect_to surveys_url }
+      format.html { redirect_to product_surveys_path(@product) }
       format.json { head :no_content }
     end
   end
