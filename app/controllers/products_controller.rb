@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_product, :only => [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -15,7 +16,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @surveys = @product.surveys.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.find(params[:id])
   end
 
   # POST /products
@@ -58,8 +58,6 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
-
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -74,7 +72,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
 
     respond_to do |format|
@@ -82,4 +79,9 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def find_product
+      @product = Product.find(params[:id])
+    end
 end

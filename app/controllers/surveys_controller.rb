@@ -5,7 +5,8 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.json
   def index
-    @surveys = Survey.all
+    # @surveys = Survey.all
+    @surveys = @product.surveys.all
 
     respond_to do |format|
       format.html # index.html.erb
