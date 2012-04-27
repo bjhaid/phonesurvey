@@ -17,6 +17,8 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+    @feedbacks = @survey.feedbacks.all
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @survey }

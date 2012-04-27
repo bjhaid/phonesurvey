@@ -11,6 +11,29 @@
   <%= @survey.yes_no %>
 </p>
 
+<h3>Listing feedbacks</h3>
+
+<table>
+  <tr>
+    <th>Survey</th>
+    <th>Answer</th>
+    <th>Callerid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @feedbacks.each do |feedback| %>
+  <tr>
+    <td><%= feedback.survey_id %></td>
+    <td><%= feedback.answer %></td>
+    <td><%= feedback.callerid %></td>
+    <td><%= link_to 'Show', product_survey_feedback_path(feedback) %></td>
+    <td><%= link_to 'Edit', edit_product_survey_feedback_path(feedback) %></td>
+    <td><%= link_to 'Destroy', [@product, @survey, feedback], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_product_survey_path(@product) %> |
 <%= link_to 'Back', product_surveys_path(@product) %>
